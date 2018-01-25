@@ -1,0 +1,9 @@
+//helpfull link
+https://laravel-news.com/laravel-tinker
+https://scotch.io/tutorials/build-a-guestbook-with-laravel-and-vuejs
+
+//kalau ingin coba di tinker
+use App\User
+$user = new User(['name'=>'cahyo', 'email'=>'cahyowhy01@gmail.com']);
+$user->password = bcrypt('12345');
+$user->save();
