@@ -1,4 +1,9 @@
 @extends('layout.app')
+
+@section('meta_title')
+    <title>Data {{$name}}</title>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">

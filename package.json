@@ -19,6 +19,7 @@
         "vue": "^2.5.7"
     },
     "dependencies": {
+        "turbolinks": "^5.1.1",
         "vuejs-paginate": "^1.6.0"
     }
 }

@@ -1,5 +1,9 @@
 @extends('layout.app')
 
+@section('meta_title')
+    <title>Home - index</title>
+@endsection
+
 @section('content')
     <div class="container">
         <div class="row">

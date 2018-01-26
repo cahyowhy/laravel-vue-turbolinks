@@ -28,6 +28,7 @@ class SignatureWebController extends Controller {
 
   public function show(Signature $signature) {
     $data = new SignatureResource($signature);
-    return view('signatures.show', ['signature' => json_encode($data)]);
+    $name = $data->name;
+    return view('signatures.show', ['signature' => json_encode($data), 'name' => $name]);
   }
 }
