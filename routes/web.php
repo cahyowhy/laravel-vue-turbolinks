@@ -15,14 +15,4 @@ Route::get('/', 'SignatureWebController@index')->name('home');
 
 Route::get('sign', 'SignatureWebController@create')->name('sign');
 
-/*Route::get('/', function () {
-    return view('home');
-});
-
-Route::get('/about', function () {
-    return view('about');
-});
-
-Route::get('/contact', function () {
-    return view('contact');
-});*/
+Route::get('show/{signature}', 'SignatureWebController@show')->name('show');

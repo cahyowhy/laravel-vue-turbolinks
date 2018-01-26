@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Signature;
+use App\Http\Resources\SignatureResource;
 
 class SignatureWebController extends Controller {
 
@@ -22,5 +24,10 @@ class SignatureWebController extends Controller {
    */
   public function create() {
     return view('signatures.sign');
+  }
+
+  public function show(Signature $signature) {
+    $data = new SignatureResource($signature);
+    return view('signatures.show', ['signature' => json_encode($data)]);
   }
 }

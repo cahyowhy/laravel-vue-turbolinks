@@ -1,24 +1,6 @@
 <template>
     <div>
-        <div class="panel panel-default" v-for="signature in signatures">
-            <div class="panel-heading">
-                <span class="glyphicon glyphicon-user" id="start"></span>
-                <label id="started">By</label> {{ signature.name }}
-            </div>
-            <div class="panel-body">
-                <div class="col-md-2">
-                    <div class="thumbnail">
-                        <img :src="signature.avatar" :alt="signature.name">
-                    </div>
-                </div>
-                <p>{{ signature.body }}</p>
-            </div>
-            <div class="panel-footer">
-                <span class="glyphicon glyphicon-calendar" id="visit"></span> {{ signature.date }} |
-                <span class="glyphicon glyphicon-flag" id="comment"></span>
-                <a href="#" id="comments" @click="report(signature.id)">Report</a>
-            </div>
-        </div>
+        <signature-item v-for="signature in signatures" :signature="signature" :key="signature.id"/>
         <paginate
                 :page-count="pageCount"
                 :click-handler="fetch"

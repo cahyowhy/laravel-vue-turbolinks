@@ -7,18 +7,19 @@
     <title>Scotch.io GuestBook</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ mix('css/app.css') }}" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="{{ mix('js/app.js') }}" async defer></script>
 </head>
 <body>
 <div id="app">
     <nav class="navbar navbar-findcond">
         <div class="container">
             <div class="navbar-header">
-                <a class="navbar-brand" href="{{ route('home') }}">GuestBook</a>
+                <a data-turbolinks-action="replace" class="navbar-brand" href="{{ route('home') }}">GuestBook</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li class="active">
-                        <a href="{{ route('sign') }}">Sign the GuestBook</a>
+                        <a data-turbolinks-action="replace" href="{{ route('sign') }}">Sign the GuestBook</a>
                     </li>
                 </ul>
             </div>
@@ -26,6 +27,5 @@
     </nav>
     @yield('content')
 </div>
-<script src="{{ mix('js/app.js') }}"></script>
 </body>
 </html>

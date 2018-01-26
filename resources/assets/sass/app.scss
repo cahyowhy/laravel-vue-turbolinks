@@ -73,3 +73,17 @@ button[type="submit"] {
     background: #2f3c4e;
   }
 }
+
+.panel-heading {
+  display: flex;
+  overflow: auto;
+  a {
+    align-self: flex-start;
+    flex: 1;
+  }
+  span {
+    align-items: center;
+    display: flex;
+    margin-right: 15px;
+  }
+}

@@ -5,7 +5,8 @@
  */
 
 require('./bootstrap');
-
+var Turbolinks = require('turbolinks');
+var _ = require('lodash');
 window.Vue = require('vue');
 
 /**
@@ -18,7 +19,42 @@ Vue.component('example-component', require('./components/ExampleComponent.vue'))
 Vue.component('signatures', require('./components/Signatures'));
 Vue.component('signature-form', require('./components/SignatureForm'));
 Vue.component('paginate', require('vuejs-paginate'));
+Vue.component('signature-item', require('./components/SignatureItem'));
+Vue.mixin(require('./mixins/vue-turbolinks'));
 
-const app = new Vue({
-    el: '#app'
-});
+let el = '#app';
+
+Turbolinks.start();
+initApp();
+function initApp() {
+
+    if (window.isInitAppPreview) {
+        return
+    }
+    window.isInitAppPreview = true;
+
+    let loadAppPreview = function(e) {
+        if (!document.querySelector(el)) {
+            return
+        }
+        if (e.type == 'pageshow' && window.appPreview && !window.appPreview._isDestroyed) {
+            return
+        }
+
+        window.appPreview = new Vue({
+            el
+        })
+    };
+
+    document.addEventListener("turbolinks:load", loadAppPreview);
+    window.addEventListener("pageshow", loadAppPreview);
+
+    document.addEventListener("turbolinks:before-cache", function() {
+        if (!document.querySelector(el)) {
+            return
+        }
+        if (window.appPreview) {
+            window.appPreview.$destroy()
+        }
+    });
+}
